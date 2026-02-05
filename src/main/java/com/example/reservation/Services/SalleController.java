@@ -1,8 +1,9 @@
-package com.example.reservation.controllers;
+package com.example.reservation.Services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,23 +23,28 @@ public class SalleController {
 	@Autowired
 	SalleRepository salleRepo;
 	
-	@GetMapping
+
 	public List <Salle> getAllSalle(){
 		return salleRepo.findAll();
 	}
 	
-	@PostMapping("/add")
-	public Salle createaddSalle(@RequestBody Salle salle) {
-		return salleRepo.save(salle);
+
+	public ResponseEntity<?> addSalle(@RequestBody Salle salle) {
+		
+		try {
+			return ResponseEntity.ok(salleRepo.save(salle));
+		}catch (Exception e) {
+	        return ResponseEntity.badRequest().body("Error : La salle n'a pas pu être créer ");
+	    }
 	}
 	
-	@PutMapping("/update/{id}")
+
 	public Salle updateSalle(@PathVariable Long id, @RequestBody Salle salle) {
 		salle.setId(id);
 		return salleRepo.save(salle);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+
 	public void deleteSalle(@PathVariable long id) {
 		salleRepo.deleteById(id);
 	}

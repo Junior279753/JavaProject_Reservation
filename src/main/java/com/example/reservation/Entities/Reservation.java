@@ -67,9 +67,5 @@ public class Reservation {
 		this.salles = salle;
 	}
 	
-	
-	
-	
-	
 
 }

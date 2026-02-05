@@ -1,8 +1,9 @@
-package com.example.reservation.controllers;
+package com.example.reservation.Services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,12 @@ public class ReservationController {
 	public List <Reservation> getAllReservation(){
 		return reservationRepo.findAll();
 	}
+    @GetMapping("/{id}")
+    public ResponseEntity<Reservation> getReservation(@PathVariable Long id) {
+        return reservationRepo.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
 	
 	@PostMapping("/add")
 	public Reservation addReservation(@RequestBody Reservation reservation) {

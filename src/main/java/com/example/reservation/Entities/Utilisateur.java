@@ -18,7 +18,10 @@ public class Utilisateur {
 	private String nom;
 	private String email;
 	private String role;
+	private String password;
 	
+
+
 	@OneToMany(mappedBy = "utilisateurs", cascade = CascadeType.ALL)
 	private List <Reservation> reservations;
 
@@ -77,7 +80,18 @@ public class Utilisateur {
 	public void setReservation(List<Reservation> reservations) {
 		this.reservations= reservations;
 	}
-	
+	public String getPassword() {
+		return this.password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
 	
 
 }
