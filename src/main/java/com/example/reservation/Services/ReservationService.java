@@ -116,9 +116,7 @@ public class ReservationService {
 	}
 	
 	
-	
-	
-    public void supprimerReservation(Long id) {
+    public void deleteReservation(Long id) {
         if (!reservationRepo.existsById(id)) {
             throw new RuntimeException("Réservation introuvable");
         }
