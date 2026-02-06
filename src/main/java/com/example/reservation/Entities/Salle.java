@@ -20,7 +20,7 @@ public class Salle {
 	private String localisation;
 	private boolean disponible;
 	
-	@OneToMany(mappedBy = "salles", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "salle", cascade = CascadeType.ALL)
 	private List <Reservation> reservations;
 	
 	

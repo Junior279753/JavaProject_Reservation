@@ -22,7 +22,7 @@ public class Utilisateur {
 	
 
 
-	@OneToMany(mappedBy = "utilisateurs", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
 	private List <Reservation> reservations;
 
 	
