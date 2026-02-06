@@ -3,6 +3,8 @@ package com.example.reservation.controllers;
 import com.example.reservation.Entities.Salle;
 import com.example.reservation.Services.SalleService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +16,8 @@ import java.util.List;
 @RequestMapping("/salles")
 @RequiredArgsConstructor
 public class SalleController {
-
-    private final SalleService salleService;
+	@Autowired
+    private  SalleService salleService;
 
 
     @RequestMapping
