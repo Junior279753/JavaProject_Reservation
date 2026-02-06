@@ -88,9 +88,4 @@ public class Salle {
 	public void setReservation(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-	
-	
-	
-	
-
 }
