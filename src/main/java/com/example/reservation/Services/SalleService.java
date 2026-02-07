@@ -65,5 +65,13 @@ public class SalleService {
 		}
 	}
 	
+	public List <Salle> availableSalle() {
+		try {
+			return salleRepo.findByDisponibleTrue();
+		}catch (Exception e){
+			throw new RuntimeException("Une erreur est survenue lors de la suppression de la salle, veuillez réessayer");
+		}
+	}
+	
 
 }
