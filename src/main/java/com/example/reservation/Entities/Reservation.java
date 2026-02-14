@@ -22,11 +22,11 @@ public class Reservation {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id")
-	private Utilisateur utilisateurs;
+	private Utilisateur utilisateur;
 	
 	@ManyToOne
 	@JoinColumn(name = "salle_id")
-	private Salle salles;
+	private Salle salle;
 	
 	
 	//getters ant setters
@@ -55,16 +55,16 @@ public class Reservation {
 		this.heureFin = heureFin;
 	}
 	public Utilisateur getUtilisateur() {
-		return utilisateurs;
+		return utilisateur;
 	}
 	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateurs = utilisateur;
+		this.utilisateur = utilisateur;
 	}
 	public Salle getSalle() {
-		return salles;
+		return salle;
 	}
 	public void setSalle(Salle salle) {
-		this.salles = salle;
+		this.salle = salle;
 	}
 	
 

@@ -1,22 +1,16 @@
 package com.example.reservation.Services;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import com.example.reservation.Entities.Reservation;
-import com.example.reservation.Entities.Salle;
-import com.example.reservation.Entities.Utilisateur;
 import com.example.reservation.Repositories.ReservationRepository;
 import com.example.reservation.Repositories.SalleRepository;
 import com.example.reservation.Repositories.UtilisateurRepository;
 
-@RestController
-@RequestMapping("/api/reservation")
+@Service
 public class ReservationService {
 	
 	@Autowired
@@ -30,27 +24,14 @@ public class ReservationService {
 	
 	
 
-    public Reservation createReservation(Long utilisateurId, Long salleId, 
-                                        LocalDate date, LocalTime debut, LocalTime fin) {
-        
+    public Reservation createReservation(Reservation reservation) {
+		try {
+			return reservationRepo.save(reservation);
+		}catch (Exception e){
+			throw new RuntimeException("Une erreur est survenue lors de la réservation, veuillez réessayer");
+		}
 
-        Utilisateur utilisateur = utilisateurRepo.findById(utilisateurId)
-            .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
-        
 
-        Salle salle = salleRepo.findById(salleId)
-            .orElseThrow(() -> new RuntimeException("Salle introuvable"));
-        
-
-        Reservation reservation = new Reservation();
-        reservation.setUtilisateur(utilisateur);
-        reservation.setSalle(salle);   
-        reservation.setDateReservation(date);
-        reservation.setHeureDebut(debut);
-        reservation.setHeureFin(fin);
-        
-
-        return reservationRepo.save(reservation);
     }
 	
 	
@@ -61,7 +42,7 @@ public class ReservationService {
 	}
 	
 	
-    public Reservation getreservationById( Long id) {
+    public Reservation getReservationById( Long id) {
     	
 	    	return reservationRepo.findById(id)
 	    			.orElseThrow(() -> new RuntimeException("Cette réservation n'existe pas"));
@@ -87,27 +68,11 @@ public class ReservationService {
 
     }
 
-	public Reservation updateRservation(Long ReservationId,Long utilisateurId, Long salleId, 
-            							LocalDate date, LocalTime debut, LocalTime fin) {
+	public Reservation updateReservation(Reservation reservation, Long id) {
 		try {
-			
-	        Utilisateur utilisateur = utilisateurRepo.findById(utilisateurId)
-	                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
-	            
+			reservation.setId(id);
 
-	            Salle salle = salleRepo.findById(salleId)
-	                .orElseThrow(() -> new RuntimeException("Salle introuvable"));
-	            
-
-	            Reservation reservation = new Reservation();
-	            reservation.setId(ReservationId);
-	            reservation.setUtilisateur(utilisateur);
-	            reservation.setSalle(salle);   
-	            reservation.setDateReservation(date);
-	            reservation.setHeureDebut(debut);
-	            reservation.setHeureFin(fin);
-	            
-	            return reservationRepo.save(reservation);
+			return reservationRepo.save(reservation);
 			
 		}catch (Exception e){
 			throw new RuntimeException("Une erreur est survenue, veuillez réessayer");

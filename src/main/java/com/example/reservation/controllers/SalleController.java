@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SalleController {
 	@Autowired
-    private  SalleService salleService;
+    private final SalleService salleService;
 
 
     @RequestMapping
@@ -28,6 +28,7 @@ public class SalleController {
         }catch (Exception e){
             modelMap.addAttribute("error",e.getMessage());
         }
+        modelMap.addAttribute("pageTitle","Salles - App de réservation");
         return "salles";
     }
 

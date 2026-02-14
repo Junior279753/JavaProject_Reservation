@@ -1,15 +1,10 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Salle - App de réservation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container text-start">
+
+<%@ include file="layouts/header.jsp" %>
+<%@ include file="layouts/navbar.jsp" %>
+
+<div class="container text-start mt-3">
         <div class="row justify-content-md-start mb-4">
             <div class="col">
                 <h1 class="fs-2 fw-bold">Salles</h1>
@@ -116,7 +111,7 @@
         </table>
     </div>
 
-    <div id="create-salle" class="modal fade " tabindex="-1" aria-hidden="true">
+<div id="create-salle" class="modal fade " tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -149,7 +144,7 @@
         </div>
     </div>
 
-    <div id="delete-salle" class="modal fade" data-bs-backdrop="static" tabindex="-1" >
+<div id="delete-salle" class="modal fade" data-bs-backdrop="static" tabindex="-1" >
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -169,7 +164,7 @@
         </div>
     </div>
 
-    <div id="update-salle" class="modal fade" tabindex="-1">
+<div id="update-salle" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -206,8 +201,8 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script>
+
+<script>
         //Update salle
         const updateModal = document.getElementById("update-salle")
         if (updateModal){
@@ -245,5 +240,5 @@
             })
         }
     </script>
-</body>
-</html>
+
+<%@ include file="layouts/footer.jsp" %>
